@@ -61,7 +61,6 @@ public class Grappling : MonoBehaviour
         if (grappling) return;
 
         grappling = true;
-        fpc.SetGrappling(true);
 
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
@@ -86,6 +85,8 @@ public class Grappling : MonoBehaviour
 
     private void ExecuteGrapple()
     {
+        fpc.SetGrappling(true);
+
         if (grapplingEnemy)
         {
             StartCoroutine(GrapplingEnemy());
@@ -107,18 +108,21 @@ public class Grappling : MonoBehaviour
         lr.enabled = false;
 
         fpc.SetGrappling(false);
-        fpc.SaveSpeed();
+        //fpc.SaveSpeed();
     }
 
     private IEnumerator GrapplingStatic()
     {
         Vector3 moveDirection = (grapplePoint - transform.position).normalized;
+        Vector3 lateralMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z);
 
         float elapsedTime = 0f;
 
         while (elapsedTime < grapplingDuration)
         {
-            fpc.grapplingHookVelocity = moveDirection * startSpeed * Time.deltaTime;
+            fpc.SetVelocity(lateralMoveDirection * startSpeed);
+            fpc.SetVerticalVelocity(moveDirection.y * startSpeed);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -135,7 +139,9 @@ public class Grappling : MonoBehaviour
         while (elapsedTime < grapplingDuration)
         {
             Vector3 moveDirection = (grappedEnemy.position - transform.position).normalized;
-            fpc.grapplingHookVelocity = moveDirection * startSpeed * Time.deltaTime;
+            Vector3 lateralMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z);
+            fpc.SetVelocity(lateralMoveDirection * startSpeed);
+            fpc.SetVerticalVelocity(moveDirection.y * startSpeed);
 
             // TODO : прит€гивание врага
 

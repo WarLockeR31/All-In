@@ -1,38 +1,80 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [Header("Movement")]
     public float lookSpeed = 2f;
     public float jumpForce = 2f;
     public float doubleJumpForce = 2f;
     public float coyoteTime = 0.2f;
-    public float hookSpeed = 10f;
-    public float gravityFalling = 9.81f;
-    public float gravityJumping = 4.905f;
+    public float lateralFriction;
 
-    // �����
-    public float dashDistance = 10f; // ��������� �����
-    public float dashDuration = 0.5f; // ������������ �����
+    [Header("Dash")]
+    // Рывок
+    public float dashDistance = 10f; // Дальность рывка
+    public float dashDuration = 0.5f; // Длительность рывка
 
+    [Header("WallJump")]
+    public float wallJumpForce = 7f;
+    public float wallCheckDistance = 1f;
+    private bool isWallSliding;
+    private Vector3 lastWallNormal;
+
+    //Private
     [HideInInspector]
-    public Vector3 grapplingHookVelocity;
-
     private bool isDashing = false;
     private CharacterController controller;
     private Vector3 velocity;
-    private Vector3 inputMovement;
-    private float ySpeed = 0f;
+    private float verticalVelocity;
+    private Vector3 inputDirection;
     private bool isGrounded;
     private bool canDoubleJump;
     private float coyoteTimeCounter;
     private bool activeGrapple;
 
     private float rotationX = 0f;
-    private float grapplingSavedSpeedHorizontal;
-    public float lateralFriction;
-    private float grapplingSavedSpeedVertical;
+
+
+    [Header("Walking")]
+    public float walkingFriction;
+    public float walkingBrakingFriction;
+    public float maxWalkSpeed;
+    public float acceleration;
+
+    [Header("Falling")]
+    public float gravityFalling = 9.81f;
+    public float gravityJumping = 4.905f;
+    public float fallingFriction;
+    public float fallingBrakingFriction;
+
+    [Header("WallSlide")]
+    public float wallSlideFriction;
+    public float wallSlideBrakingFriction;
+    public float wallSlideSpeed = 2f;
+    public float wallSlideCoolDown;
+    private float wallSlideCDTimer;
+    public LayerMask wallLayer; // Указываем в инспекторе, какие слои считаем стенами
+
+    public enum PlayerState
+    {
+        Idle,
+        Walking,
+        Falling,
+        Dashing,
+        WallSliding,
+        Hooking
+    }
+
+    private PlayerState currentState;
+
+    void ChangeState(PlayerState newState)
+    {
+        if (currentState == newState) return; // Если состояние не изменилось, выходим
+        currentState = newState;
+        Debug.Log("State Changed To: " + currentState);
+    }
+
 
     void Start()
     {
@@ -42,49 +84,218 @@ public class FirstPersonController : MonoBehaviour
 
         Camera.main.transform.localRotation = Quaternion.Euler(0, 0f, 0f);
     }
-
+    
     void Update()
     {
-        grapplingSavedSpeedHorizontal = grapplingSavedSpeedHorizontal - lateralFriction * Time.deltaTime;
-        grapplingSavedSpeedHorizontal = Mathf.Clamp(grapplingSavedSpeedHorizontal, 0, grapplingSavedSpeedHorizontal);
-        Debug.Log($"HV: {grapplingSavedSpeedHorizontal}");
-        Debug.Log($"VV: {grapplingSavedSpeedVertical}");
-
         Look();
 
-        //if (Input.GetButtonDown("Fire1") && !isHooking)
-        //{
-        //    StartCoroutine(HookShot());
-        //}
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
+        inputDirection = (transform.right * moveX + transform.forward * moveZ).normalized;
+
+        isGrounded = controller.isGrounded;
+        coyoteTimeCounter = isGrounded ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
+
+        switch (currentState)
+        {
+            case PlayerState.Idle:
+                if (inputDirection.magnitude > 0 || velocity.magnitude > 0) ChangeState(PlayerState.Walking);
+                if (!isGrounded) ChangeState(PlayerState.Falling);
+                break;
+
+            case PlayerState.Walking:
+                if (velocity.magnitude == 0) ChangeState(PlayerState.Idle);
+                if (!isGrounded) ChangeState(PlayerState.Falling);
+                PhysWalking();
+                break;
+
+            case PlayerState.Falling:
+                if (isGrounded) ChangeState(PlayerState.Idle);
+                PhysFalling();
+                break;
+
+            case PlayerState.Dashing:
+                // Не реагируем на другие состояния пока идёт рывок
+                break;
+
+            case PlayerState.WallSliding:
+                if (isGrounded) ChangeState(PlayerState.Idle);
+                PhysWallSliding();
+                break;
+
+            case PlayerState.Hooking:
+                //if (!activeGrapple) ChangeState(PlayerState.Falling);
+                break;
+        }
+
+        TryWallSlide();
+        TryJump();
+
 
         if (Input.GetButtonDown("Fire2"))
         {
+            ChangeState(PlayerState.Dashing);
             StartCoroutine(Dash());
         }
 
-        //Input movement
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        if (wallSlideCDTimer > 0)
+            wallSlideCDTimer -= Time.deltaTime;
 
-        inputMovement = transform.right * moveX + transform.forward * moveZ;
+        controller.Move(velocity * Time.deltaTime);
+        controller.Move(new Vector3(0f, verticalVelocity, 0f) * Time.deltaTime);
+    }
 
 
-        //Vertical movement
-        VerticalMovement();
-        
-        if (activeGrapple)
+    void PhysWalking()
+    {
+        verticalVelocity = -2f;
+        canDoubleJump = true;
+
+        Vector3 lateralVelocity = new Vector3(velocity.x, 0, velocity.z);
+        float lateralSpeed = lateralVelocity.magnitude;
+        if (lateralSpeed > maxWalkSpeed)
         {
-            controller.Move(grapplingHookVelocity * Time.deltaTime);
+
+            lateralSpeed = lateralSpeed - walkingFriction * Time.deltaTime;
+            if (lateralSpeed < maxWalkSpeed)
+                lateralSpeed = maxWalkSpeed;
+        }
+
+        if (inputDirection.magnitude == 0)
+        {
+            lateralSpeed = lateralSpeed - walkingBrakingFriction * Time.deltaTime;
+            lateralSpeed = Mathf.Clamp(lateralSpeed, 0, lateralSpeed);
+            velocity = lateralSpeed * velocity.normalized;
             return;
         }
 
-        if (!isDashing)
+        Vector3 Direction = (inputDirection.magnitude == 0) ? velocity.normalized : inputDirection;
+        Vector3 newVelocity = lateralSpeed * Direction + Direction * acceleration * Time.deltaTime;
+
+
+        if (newVelocity.magnitude > maxWalkSpeed)
         {
-            controller.Move(inputMovement * moveSpeed * Time.deltaTime + inputMovement * grapplingSavedSpeedHorizontal * Time.deltaTime);
-            //controller.Move(new Vector3(0f, ySpeed, 0f) * Time.deltaTime + Vector3.up * grapplingSavedSpeedVertical * Time.deltaTime);
-            controller.Move(new Vector3(0f, ySpeed, 0f) * Time.deltaTime);
+            if (lateralSpeed > maxWalkSpeed)
+            {
+                velocity = lateralSpeed * Direction;
+            }
+            else
+            {
+                velocity = maxWalkSpeed * Direction;
+            }
+            return;
+        }
+
+
+        velocity = lateralSpeed * Direction + Direction * acceleration * Time.deltaTime;
+    }
+
+    void PhysFalling()
+    {
+        verticalVelocity -= (verticalVelocity > 0 ? gravityJumping : gravityFalling) * Time.deltaTime;
+
+        Vector3 lateralVelocity = new Vector3(velocity.x, 0, velocity.z);
+        float lateralSpeed = lateralVelocity.magnitude;
+        if (lateralSpeed > maxWalkSpeed)
+        {
+
+            lateralSpeed = lateralSpeed - fallingFriction * Time.deltaTime;
+            if (lateralSpeed < maxWalkSpeed)
+                lateralSpeed = maxWalkSpeed;
+        }
+
+        if (inputDirection.magnitude == 0)
+        {
+            lateralSpeed = lateralSpeed - fallingBrakingFriction * Time.deltaTime;
+            lateralSpeed = Mathf.Clamp(lateralSpeed, 0, lateralSpeed);
+
+            velocity = lateralSpeed * velocity.normalized;
+            return;
+        }
+
+        Vector3 Direction = (inputDirection.magnitude == 0) ? velocity.normalized : inputDirection;
+
+        Vector3 newVelocity = lateralSpeed * Direction + Direction * acceleration * Time.deltaTime;
+
+
+        if (newVelocity.magnitude > maxWalkSpeed)
+        {
+            if (lateralSpeed > maxWalkSpeed)
+            {
+                velocity = lateralSpeed * Direction;
+            }
+            else
+            {
+                velocity = maxWalkSpeed * Direction;
+            }
+            return;
+        }
+
+
+        velocity = lateralSpeed * Direction + Direction * acceleration * Time.deltaTime;
+
+    }
+
+    void PhysWallSliding()
+    {
+        verticalVelocity = -wallSlideSpeed;
+        canDoubleJump = true;
+        velocity = Vector3.zero;
+    }
+
+    void TryJump()
+    {
+        if (!Input.GetButtonDown("Jump"))
+            return;
+
+        if (currentState == PlayerState.Idle || currentState == PlayerState.Walking || currentState == PlayerState.WallSliding)
+        {
+            Jump();
+            return;
+        }
+        if (currentState == PlayerState.Falling && (coyoteTimeCounter > 0 || canDoubleJump))
+        {
+            Jump();
+            return;
         }
     }
+
+    void Jump()
+    {
+        if (currentState == PlayerState.Falling && coyoteTimeCounter <= 0 && canDoubleJump)
+        {
+            canDoubleJump = false;
+            verticalVelocity = doubleJumpForce;
+            return;
+        }
+
+
+        if (currentState == PlayerState.WallSliding)
+        {
+            velocity = lastWallNormal * wallJumpForce;
+            wallSlideCDTimer = wallSlideCoolDown;
+        }
+
+        verticalVelocity = jumpForce;
+
+        ChangeState(PlayerState.Falling);
+    }
+
+    void TryWallSlide()
+    {
+        bool wallLeft = Physics.Raycast(transform.position, -transform.right, out RaycastHit leftWallHit, wallCheckDistance, wallLayer);
+        bool wallRight = Physics.Raycast(transform.position, transform.right, out RaycastHit rightWallHit, wallCheckDistance, wallLayer);
+
+        // Если персонаж касается стены, но не стоит на земле → включаем скольжение
+        isWallSliding = (wallLeft || wallRight) && !isGrounded && (wallSlideCDTimer <= 0);
+
+        if (isWallSliding)
+        {
+            lastWallNormal = wallLeft ? leftWallHit.normal : rightWallHit.normal;
+            ChangeState(PlayerState.WallSliding);
+        }
+    }
+
 
     void Look()
     {
@@ -98,59 +309,8 @@ public class FirstPersonController : MonoBehaviour
         Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
     }
 
-    //// ������� ���������� �����-�����
-    //private IEnumerator HookShot()
-    //{
-    //    isHooking = true;
-    //    hookDirection = Camera.main.transform.forward;
 
-    //    float elapsedTime = 0f;
-    //    Vector3 startPosition = transform.position;
-
-    //    while (elapsedTime < 1f)
-    //    {
-    //        transform.position = Vector3.Lerp(startPosition, startPosition + hookDirection * 10f, elapsedTime);
-    //        elapsedTime += Time.deltaTime * hookSpeed;
-    //        yield return null;
-    //    }
-
-    //    isHooking = false;
-    //}
-
-    void VerticalMovement()
-    {
-        isGrounded = controller.isGrounded;
-
-        coyoteTimeCounter = isGrounded ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
-
-        if (isDashing && activeGrapple)
-        {
-            ySpeed = -2f;
-            return;
-        }
-
-        if (isGrounded)
-        {
-            ySpeed = -2f;
-            canDoubleJump = true;
-        }
-        else
-        {
-            ySpeed -= (controller.velocity.y > 0f ? gravityJumping : gravityFalling) * Time.deltaTime;
-        }
-
-        if (coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
-        {
-            ySpeed = Mathf.Sqrt(jumpForce);
-        }
-        else if (Input.GetButtonDown("Jump") && canDoubleJump)
-        {
-            ySpeed = Mathf.Sqrt(doubleJumpForce);
-            canDoubleJump = false;
-        }
-    }
-
-    // ���������� ����� ����� ��������
+    // Реализация рывка через корутину
     private IEnumerator Dash()
     {
         if (isDashing)
@@ -158,29 +318,44 @@ public class FirstPersonController : MonoBehaviour
 
         isDashing = true;
 
-        Vector3 dashDirection = inputMovement.normalized;
+        Vector3 dashDirection = inputDirection.normalized;
         float dashSpeed = dashDistance / dashDuration;
 
         float elapsedTime = 0f;
 
         while (elapsedTime < dashDuration)
         {
-            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+            velocity = dashDirection * dashSpeed;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        velocity = maxWalkSpeed * velocity.normalized;
+        ChangeState(PlayerState.Idle);
         isDashing = false;
     }
 
     public void SetGrappling(bool newValue)
     {
         activeGrapple = newValue;
+        if (activeGrapple)
+        {
+            ChangeState(PlayerState.Hooking);
+        }
+        else
+        {
+            ChangeState(PlayerState.Falling);
+            wallSlideCDTimer = wallSlideCoolDown;
+        }
     }
 
-    public void SaveSpeed()
+    public void SetVelocity(Vector3 newValue)
     {
-        grapplingSavedSpeedHorizontal = new Vector3(grapplingHookVelocity.x, 0f, grapplingHookVelocity.z).magnitude;
-        ySpeed = grapplingHookVelocity.y;
+        velocity = newValue;
+    }
+
+    public void SetVerticalVelocity(float newValue)
+    {
+        verticalVelocity = newValue;
     }
 }
