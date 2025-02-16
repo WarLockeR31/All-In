@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e45593c729b1c14fb50f05ca1249dfb, type: 3}
+  m_Name: WallJump
+  m_EditorClassIdentifier: 
+  symbolName: wallJump
+  symbolSprite: {fileID: 4621913603120549319, guid: d46aa7e7da126fd4f96e70ca0be611e3, type: 3}
