@@ -15,7 +15,10 @@ public class FirstPersonController : MonoBehaviour
     // Рывок
     public float dashDistance = 10f; // Дальность рывка
     public float dashDuration = 0.5f; // Длительность рывка
-    
+
+    [HideInInspector]
+    public Vector3 grapplingHookVelocity;
+
     private bool isDashing = false;
     private CharacterController controller;
     private Vector3 velocity;
@@ -24,8 +27,12 @@ public class FirstPersonController : MonoBehaviour
     private bool isGrounded;
     private bool canDoubleJump;
     private float coyoteTimeCounter;
+    private bool activeGrapple;
 
     private float rotationX = 0f;
+    private float grapplingSavedSpeedHorizontal;
+    public float lateralFriction;
+    private float grapplingSavedSpeedVertical;
 
     void Start()
     {
@@ -38,22 +45,10 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
-        
-
-        //Input movement
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        inputMovement = transform.right * moveX + transform.forward * moveZ;
-
-
-        //Vertical movement
-        VerticalMovement();
-        
-
-        controller.Move(inputMovement * moveSpeed * Time.deltaTime);
-        controller.Move(new Vector3(0f, isDashing ? 0 : ySpeed, 0f) * Time.deltaTime);
-
+        grapplingSavedSpeedHorizontal = grapplingSavedSpeedHorizontal - lateralFriction * Time.deltaTime;
+        grapplingSavedSpeedHorizontal = Mathf.Clamp(grapplingSavedSpeedHorizontal, 0, grapplingSavedSpeedHorizontal);
+        Debug.Log($"HV: {grapplingSavedSpeedHorizontal}");
+        Debug.Log($"VV: {grapplingSavedSpeedVertical}");
 
         Look();
 
@@ -65,6 +60,29 @@ public class FirstPersonController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             StartCoroutine(Dash());
+        }
+
+        //Input movement
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        inputMovement = transform.right * moveX + transform.forward * moveZ;
+
+
+        //Vertical movement
+        VerticalMovement();
+        
+        if (activeGrapple)
+        {
+            controller.Move(grapplingHookVelocity * Time.deltaTime);
+            return;
+        }
+
+        if (!isDashing)
+        {
+            controller.Move(inputMovement * moveSpeed * Time.deltaTime + inputMovement * grapplingSavedSpeedHorizontal * Time.deltaTime);
+            //controller.Move(new Vector3(0f, ySpeed, 0f) * Time.deltaTime + Vector3.up * grapplingSavedSpeedVertical * Time.deltaTime);
+            controller.Move(new Vector3(0f, ySpeed, 0f) * Time.deltaTime);
         }
     }
 
@@ -105,7 +123,7 @@ public class FirstPersonController : MonoBehaviour
 
         coyoteTimeCounter = isGrounded ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
 
-        if (isDashing)
+        if (isDashing && activeGrapple)
         {
             ySpeed = -2f;
             return;
@@ -153,5 +171,16 @@ public class FirstPersonController : MonoBehaviour
         }
 
         isDashing = false;
+    }
+
+    public void SetGrappling(bool newValue)
+    {
+        activeGrapple = newValue;
+    }
+
+    public void SaveSpeed()
+    {
+        grapplingSavedSpeedHorizontal = new Vector3(grapplingHookVelocity.x, 0f, grapplingHookVelocity.z).magnitude;
+        ySpeed = grapplingHookVelocity.y;
     }
 }
