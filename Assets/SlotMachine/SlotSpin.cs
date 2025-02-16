@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class SlotSpin : MonoBehaviour
     public RectTransform reelTransform;  // Контейнер барабана
     public float spinSpeed = 1000f;       // Скорость кручения
     public float spinTime = 2f;          // Время кручения
-    private bool isSpinning = false;
+    public bool isSpinning = false;
 
     public void StartSpin()
     {
@@ -32,6 +33,7 @@ public class SlotSpin : MonoBehaviour
             reelTransform.anchoredPosition -= new Vector2(0, spinSpeed * Time.deltaTime);
             if (reelTransform.anchoredPosition.y <= -200) // Если символы вышли за границу
             {
+
                 reelTransform.anchoredPosition += new Vector2(0, 400); // Перемещаем обратно вверх
                 image.sprite = slotSymbols[Random.Range(0, slotSymbols.Length)].symbolSprite;
             }

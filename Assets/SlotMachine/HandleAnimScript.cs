@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class SlotMachineHandle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
     private Animator animator;
     private void Start()
     {
