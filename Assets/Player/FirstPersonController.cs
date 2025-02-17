@@ -132,7 +132,7 @@ public class FirstPersonController : MonoBehaviour
         TryJump();
 
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             ChangeState(PlayerState.Dashing);
             StartCoroutine(Dash());
