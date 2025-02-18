@@ -41008,7 +41008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8396226, g: 0.70768607, b: 0.5505073, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -41272,7 +41272,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1221735582857330713}
-  m_PlaneDistance: 1
+  m_PlaneDistance: 0.31
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -41282,7 +41282,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &6242986960785153580
 MonoBehaviour:
@@ -41627,7 +41627,6 @@ GameObject:
   - component: {fileID: 1221735582857330713}
   - component: {fileID: 8953813652592658119}
   - component: {fileID: 8953813652592658118}
-  - component: {fileID: 8953813652592658117}
   - component: {fileID: 5564467835693601122}
   m_Layer: 2
   m_Name: Main Camera
@@ -41636,20 +41635,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8953813652592658117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8953813652592658116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b3db54267ead9478a878356b48e20f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pixelArtFilter: {fileID: 4800000, guid: 40f888868bff54e489d63cf2a046892c, type: 3}
-  downSamples: 1
 --- !u!114 &8953813652592658118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41667,9 +41652,9 @@ MonoBehaviour:
   redColorCount: 16
   greenColorCount: 16
   blueColorCount: 16
-  bayerLevel: 1
+  bayerLevel: 0
   downSamples: 1
-  pointFilterDown: 0
+  pointFilterDown: 1
 --- !u!114 &8953813652592658119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41683,7 +41668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharpnessShader: {fileID: 4800000, guid: a60d9da21dda2f649b384ce891b66ca7, type: 3}
-  amount: -1
+  amount: -0.3
 --- !u!1 &9160298742206971179
 GameObject:
   m_ObjectHideFlags: 0
