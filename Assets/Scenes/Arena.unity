@@ -41270,16 +41270,16 @@ Canvas:
   m_GameObject: {fileID: 8407187508801098333}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 1221735582857330713}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -41625,6 +41625,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5985579440566312527}
   - component: {fileID: 1221735582857330713}
+  - component: {fileID: 8953813652592658119}
+  - component: {fileID: 8953813652592658118}
+  - component: {fileID: 8953813652592658117}
   - component: {fileID: 5564467835693601122}
   m_Layer: 2
   m_Name: Main Camera
@@ -41633,6 +41636,54 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8953813652592658117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8953813652592658116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b3db54267ead9478a878356b48e20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelArtFilter: {fileID: 4800000, guid: 40f888868bff54e489d63cf2a046892c, type: 3}
+  downSamples: 1
+--- !u!114 &8953813652592658118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8953813652592658116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851d5c4e6ffbab940a0462ccd7a479f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ditherShader: {fileID: 4800000, guid: 3def5a2e3407cae4eb321c0c456fe16a, type: 3}
+  spread: 0.0625
+  redColorCount: 16
+  greenColorCount: 16
+  blueColorCount: 16
+  bayerLevel: 1
+  downSamples: 1
+  pointFilterDown: 0
+--- !u!114 &8953813652592658119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8953813652592658116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4593f0e4b129db4488de943f5edba8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharpnessShader: {fileID: 4800000, guid: a60d9da21dda2f649b384ce891b66ca7, type: 3}
+  amount: -1
 --- !u!1 &9160298742206971179
 GameObject:
   m_ObjectHideFlags: 0
