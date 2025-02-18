@@ -157,7 +157,9 @@ public class Attacking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (player.isUIOpen)
+            return; 
+            
         if (!player.animator.GetBool("isBlocking"))
         {
             InputManager();

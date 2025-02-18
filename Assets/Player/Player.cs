@@ -1,45 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]private float money = 100f;
+    public int money = 100;
 
     [SerializeField] private float health = 100f;
 
-    private float playerLevel = 0;
+    private int playerLevel = 0;
 
-    private float maxLevel = 5f;
 
-    private float damage = 10f;
+    private int damage = 10;
 
     public Animator animator;
 
-    
+    public bool isUIOpen = false;
 
-    public void LoseMoney(float amount)
+    public enum abilities {dash, doublejump, walljump, hook}
+
+    public Dictionary<int, bool> unlockables;
+
+
+    public void SetUIActive(bool state)
     {
-        money-=amount;
+        isUIOpen = state;
+        // Останавливаем управление камерой
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = state;
     }
+
+    
 
     public void LoseHealth(float amount) {
         if (!animator.GetBool("isBlocking"))
             health-=amount;
     }
 
-    public void GainMoney(float amount)
-    {
-        money+=amount;
-    }
 
     void Start()
     {
-        
+        unlockables = new Dictionary<int, bool>();
+        unlockables.Add(0, false);
+        unlockables.Add(1, false);
+        unlockables.Add(2, false);
+        unlockables.Add(3, false);
     }
 
     void Update()
     {
-        
+        //foreach(var kvp in unlockables)
+        //{
+        //    //Debug.Log($"{kvp.Key} -> {kvp.Value}\n");
+        //}
     }
 }
