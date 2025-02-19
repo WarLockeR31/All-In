@@ -14,6 +14,11 @@ public class SlotSpin : MonoBehaviour
     public float spinSpeed = 1000f;       // Скорость кручения
     public float spinTime = 2f;          // Время кручения
     public bool isSpinning = false;
+    public int SpinCount = 5;
+    public int objIndex =0;
+    public bool guaranteeDrop = false;
+
+    
 
     public void StartSpin()
     {
@@ -26,18 +31,25 @@ public class SlotSpin : MonoBehaviour
     IEnumerator SpinReel()
     {
         isSpinning = true;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < spinTime)
+        int currSpin=0;
+        while (true)
         {
             reelTransform.anchoredPosition -= new Vector2(0, spinSpeed * Time.deltaTime);
             if (reelTransform.anchoredPosition.y <= -200) // Если символы вышли за границу
             {
-
-                reelTransform.anchoredPosition += new Vector2(0, 400); // Перемещаем обратно вверх
-                image.sprite = slotSymbols[Random.Range(0, slotSymbols.Length)].symbolSprite;
+                reelTransform.anchoredPosition += new Vector2(0, 400);// Перемещаем обратно вверх
+                currSpin++;
+                if (currSpin==SpinCount&&guaranteeDrop)
+                    image.sprite = slotSymbols[objIndex].symbolSprite;
+                else
+                if (currSpin==SpinCount&&!guaranteeDrop)
+                    image.sprite = slotSymbols[objIndex].symbolSprite;
+                else
+                    image.sprite = slotSymbols[Random.Range(0, slotSymbols.Length)].symbolSprite;
+               
             }
-            elapsedTime += Time.deltaTime;
+            if (currSpin==SpinCount)
+                break;
             yield return null;
         }
 

@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 
 public class Grappling : MonoBehaviour
 {
+
+
+    private Player player;
+
     [Header("References")]
     private FirstPersonController fpc;
     public Transform cam;
@@ -38,11 +42,12 @@ public class Grappling : MonoBehaviour
     private void Start()
     {
         fpc = GetComponent<FirstPersonController>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2)) StartGrapple();
+        if (Input.GetKeyDown(KeyCode.Mouse2)&&player.unlockables[(int)Player.abilities.hook]) StartGrapple();
 
         if (grapplingCdTimer > 0)
             grapplingCdTimer -= Time.deltaTime;

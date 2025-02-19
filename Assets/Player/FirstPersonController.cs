@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
+
+    private UIManager manager;
+
+
     [Header("Movement")]
     public float lookSpeed = 2f;
     public float jumpForce = 2f;
@@ -11,6 +15,7 @@ public class FirstPersonController : MonoBehaviour
     public float lateralFriction;
 
     [Header("Dash")]
+    public bool canDash = false;
     // Рывок
     public float dashDistance = 10f; // Дальность рывка
     public float dashDuration = 0.5f; // Длительность рывка
@@ -66,6 +71,9 @@ public class FirstPersonController : MonoBehaviour
         Hooking
     }
 
+    private Player player;
+
+
     private PlayerState currentState;
 
     void ChangeState(PlayerState newState)
@@ -75,9 +83,12 @@ public class FirstPersonController : MonoBehaviour
         Debug.Log("State Changed To: " + currentState);
     }
 
+   
 
     void Start()
     {
+        manager = GetComponent<UIManager>();
+        player = GetComponent<Player>();
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -85,8 +96,18 @@ public class FirstPersonController : MonoBehaviour
         Camera.main.transform.localRotation = Quaternion.Euler(0, 0f, 0f);
     }
     
+
+
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            manager.ToggleUI();
+        }
+        if (player.isUIOpen)
+        {      
+            return;
+        }
+
         Look();
 
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -128,14 +149,16 @@ public class FirstPersonController : MonoBehaviour
                 break;
         }
 
-        TryWallSlide();
+        if (player.unlockables[(int)Player.abilities.walljump])
+            TryWallSlide();
+        
         TryJump();
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&player.unlockables[(int)Player.abilities.dash])
         {
-            ChangeState(PlayerState.Dashing);
-            StartCoroutine(Dash());
+                ChangeState(PlayerState.Dashing);
+                StartCoroutine(Dash());
         }
 
         if (wallSlideCDTimer > 0)
@@ -253,7 +276,7 @@ public class FirstPersonController : MonoBehaviour
             Jump();
             return;
         }
-        if (currentState == PlayerState.Falling && (coyoteTimeCounter > 0 || canDoubleJump))
+        if (currentState == PlayerState.Falling && (coyoteTimeCounter > 0 || canDoubleJump) && player.unlockables[(int)Player.abilities.doublejump])
         {
             Jump();
             return;
