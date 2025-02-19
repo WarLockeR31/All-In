@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public int money = 100;
-
-    [SerializeField] private float health = 100f;
 
     private int playerLevel = 0;
 
@@ -22,6 +21,8 @@ public class Player : MonoBehaviour
 
     public Dictionary<int, bool> unlockables;
 
+    public TextMeshProUGUI moneyShow;
+
 
     public void SetUIActive(bool state)
     {
@@ -31,13 +32,7 @@ public class Player : MonoBehaviour
         Cursor.visible = state;
     }
 
-    
-
-    public void LoseHealth(float amount) {
-        if (!animator.GetBool("isBlocking"))
-            health-=amount;
-    }
-
+   
 
     void Start()
     {
@@ -50,9 +45,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        moneyShow.text = money.ToString();
         //foreach(var kvp in unlockables)
         //{
         //    //Debug.Log($"{kvp.Key} -> {kvp.Value}\n");
         //}
+
+
     }
 }

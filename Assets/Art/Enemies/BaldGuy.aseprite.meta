@@ -1,0 +1,835 @@
+fileFormatVersion: 2
+guid: 165a48442e57ea64f81c259ff45ffd63
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: BaldGuy_Frame_0
+    originalName: 
+    pivot: {x: 0.5272727, y: -0.25210086}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 424
+      y: 4
+      width: 165
+      height: 357
+    spriteID: b5382616f678e304296e91cbeede1dae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 424, y: 4}
+  - name: BaldGuy_Frame_1
+    originalName: 
+    pivot: {x: 0.5212121, y: -0.36119404}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 424
+      y: 1086
+      width: 165
+      height: 335
+    spriteID: c54aa0d3b0136404b860060f86b50d34
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 424, y: 1086}
+  - name: BaldGuy_Frame_2
+    originalName: 
+    pivot: {x: 0.5426829, y: -0.30029157}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 424
+      y: 735
+      width: 164
+      height: 343
+    spriteID: 4e0e4bf631412bb40a28ddfbd70acdf1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 424, y: 735}
+  - name: BaldGuy_Frame_3
+    originalName: 
+    pivot: {x: 0.5617284, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 252
+      y: 1488
+      width: 162
+      height: 358
+    spriteID: d76574ad3232f574a861623acd38d3bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 252, y: 1488}
+  - name: BaldGuy_Frame_4
+    originalName: 
+    pivot: {x: 0.47878787, y: -0.36119404}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 424
+      y: 1429
+      width: 165
+      height: 335
+    spriteID: d1e73286b35f97a4a9df7435cb2d11d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 424, y: 1429}
+  - name: BaldGuy_Frame_5
+    originalName: 
+    pivot: {x: 0.55357146, y: -0.29855072}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 597
+      y: 4
+      width: 168
+      height: 345
+    spriteID: 046357f030bfac14c9bb5ae97737278c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 597, y: 4}
+  - name: BaldGuy_Frame_6
+    originalName: 
+    pivot: {x: 0.4382716, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 424
+      y: 369
+      width: 162
+      height: 358
+    spriteID: 5f592d6842928b342aa3d08d72376243
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 424, y: 369}
+  - name: BaldGuy_Frame_7
+    originalName: 
+    pivot: {x: 0.5586207, y: -0.21739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 597
+      y: 723
+      width: 145
+      height: 368
+    spriteID: d73263b6ca1f499449e734ce60fad817
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 597, y: 723}
+  - name: BaldGuy_Frame_8
+    originalName: 
+    pivot: {x: 0.59292036, y: -0.21978022}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 773
+      y: 758
+      width: 113
+      height: 364
+    spriteID: 9d468011a54ff5b4e8eca7c2f13bdd04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 773, y: 758}
+  - name: BaldGuy_Frame_9
+    originalName: 
+    pivot: {x: 0.59999996, y: -0.21739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 773
+      y: 382
+      width: 115
+      height: 368
+    spriteID: 24b9517aefe89cf47b0c3d91c913f65a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 773, y: 382}
+  - name: BaldGuy_Frame_10
+    originalName: 
+    pivot: {x: 0.59292036, y: -0.21978022}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 773
+      y: 1130
+      width: 113
+      height: 364
+    spriteID: 350c89a030532cb46938d2e26437a0d2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 773, y: 1130}
+  - name: BaldGuy_Frame_11
+    originalName: 
+    pivot: {x: 0.55487806, y: -0.21739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 252
+      y: 4
+      width: 164
+      height: 368
+    spriteID: 7839d7a92fe9c304b9f039ba1ecd8ea4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 252, y: 4}
+  - name: BaldGuy_Frame_12
+    originalName: 
+    pivot: {x: 0.5375, y: -0.28873238}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 240
+      height: 284
+    spriteID: 83c15f9a861a2b7499f035b34baa6289
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: BaldGuy_Frame_13
+    originalName: 
+    pivot: {x: 0.55487806, y: -0.21739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 252
+      y: 380
+      width: 164
+      height: 368
+    spriteID: df84201e95d58ac4c930080faffb6e5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 252, y: 380}
+  - name: BaldGuy_Frame_14
+    originalName: 
+    pivot: {x: 0.55487806, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 252
+      y: 756
+      width: 164
+      height: 358
+    spriteID: d2d248b002bf2af45a8439f5de1f4702
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 252, y: 756}
+  - name: BaldGuy_Frame_15
+    originalName: 
+    pivot: {x: 0.56804734, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1428
+      width: 169
+      height: 358
+    spriteID: 196321f46e612b84fa691c48eccb6b5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1428}
+  - name: BaldGuy_Frame_16
+    originalName: 
+    pivot: {x: 0.5974026, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 597
+      y: 357
+      width: 154
+      height: 358
+    spriteID: 2591ecca086051243979ac032d3496b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 597, y: 357}
+  - name: BaldGuy_Frame_17
+    originalName: 
+    pivot: {x: 0.7111111, y: -0.24581005}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1062
+      width: 180
+      height: 358
+    spriteID: f7405c5397bdd5f4b9646c7c76059ae6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1062}
+  - name: BaldGuy_Frame_18
+    originalName: 
+    pivot: {x: 0.6896552, y: -0.2016129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 296
+      width: 174
+      height: 372
+    spriteID: 23f2cf033e107824d82e0eeef2a8bb28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 296}
+  - name: BaldGuy_Frame_19
+    originalName: 
+    pivot: {x: 0.6725146, y: -0.1957672}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 676
+      width: 171
+      height: 378
+    spriteID: bb30b345b82295848b137e12520c2697
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 676}
+  - name: BaldGuy_Frame_20
+    originalName: 
+    pivot: {x: 0.6641791, y: -0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 597
+      y: 1482
+      width: 134
+      height: 370
+    spriteID: fe730530eeb777948b3d9343b4febbee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 597, y: 1482}
+  - name: BaldGuy_Frame_21
+    originalName: 
+    pivot: {x: 0.4634146, y: -0.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 773
+      y: 4
+      width: 123
+      height: 370
+    spriteID: 5d0e39a3471f64b4c892921699195718
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 773, y: 4}
+  - name: BaldGuy_Frame_22
+    originalName: 
+    pivot: {x: 0.5106383, y: -0.19733334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 597
+      y: 1099
+      width: 141
+      height: 375
+    spriteID: 532f49b73c126cb4d82fb262dd40314e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 597, y: 1099}
+  - name: BaldGuy_Frame_23
+    originalName: 
+    pivot: {x: 0.55487806, y: -0.25139663}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 252
+      y: 1122
+      width: 164
+      height: 358
+    spriteID: dd3067ad021aef0418f62df7b0032adc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 252, y: 1122}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 768615462
+    name: BaldGuy
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: BaldGuy_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 169
+        y: 90
+        width: 165
+        height: 357
+      spriteId: b5382616f678e304296e91cbeede1dae
+    - name: BaldGuy_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 170
+        y: 121
+        width: 165
+        height: 335
+      spriteId: c54aa0d3b0136404b860060f86b50d34
+    - name: BaldGuy_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 167
+        y: 103
+        width: 164
+        height: 343
+      spriteId: 4e0e4bf631412bb40a28ddfbd70acdf1
+    - name: BaldGuy_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 165
+        y: 90
+        width: 162
+        height: 358
+      spriteId: d76574ad3232f574a861623acd38d3bf
+    - name: BaldGuy_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 177
+        y: 121
+        width: 165
+        height: 335
+      spriteId: d1e73286b35f97a4a9df7435cb2d11d7
+    - name: BaldGuy_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 163
+        y: 103
+        width: 168
+        height: 345
+      spriteId: 046357f030bfac14c9bb5ae97737278c
+    - name: BaldGuy_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 185
+        y: 90
+        width: 162
+        height: 358
+      spriteId: 5f592d6842928b342aa3d08d72376243
+    - name: BaldGuy_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 175
+        y: 80
+        width: 145
+        height: 368
+      spriteId: d73263b6ca1f499449e734ce60fad817
+    - name: BaldGuy_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 189
+        y: 80
+        width: 113
+        height: 364
+      spriteId: 9d468011a54ff5b4e8eca7c2f13bdd04
+    - name: BaldGuy_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 187
+        y: 80
+        width: 115
+        height: 368
+      spriteId: 24b9517aefe89cf47b0c3d91c913f65a
+    - name: BaldGuy_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 189
+        y: 80
+        width: 113
+        height: 364
+      spriteId: 350c89a030532cb46938d2e26437a0d2
+    - name: BaldGuy_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 165
+        y: 80
+        width: 164
+        height: 368
+      spriteId: 7839d7a92fe9c304b9f039ba1ecd8ea4
+    - name: BaldGuy_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 127
+        y: 82
+        width: 240
+        height: 284
+      spriteId: 83c15f9a861a2b7499f035b34baa6289
+    - name: BaldGuy_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 165
+        y: 80
+        width: 164
+        height: 368
+      spriteId: df84201e95d58ac4c930080faffb6e5f
+    - name: BaldGuy_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 165
+        y: 90
+        width: 164
+        height: 358
+      spriteId: d2d248b002bf2af45a8439f5de1f4702
+    - name: BaldGuy_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 160
+        y: 90
+        width: 169
+        height: 358
+      spriteId: 196321f46e612b84fa691c48eccb6b5f
+    - name: BaldGuy_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 164
+        y: 90
+        width: 154
+        height: 358
+      spriteId: 2591ecca086051243979ac032d3496b7
+    - name: BaldGuy_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 128
+        y: 88
+        width: 180
+        height: 358
+      spriteId: f7405c5397bdd5f4b9646c7c76059ae6
+    - name: BaldGuy_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 136
+        y: 75
+        width: 174
+        height: 372
+      spriteId: 23f2cf033e107824d82e0eeef2a8bb28
+    - name: BaldGuy_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 141
+        y: 74
+        width: 171
+        height: 378
+      spriteId: bb30b345b82295848b137e12520c2697
+    - name: BaldGuy_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 167
+        y: 74
+        width: 134
+        height: 370
+      spriteId: fe730530eeb777948b3d9343b4febbee
+    - name: BaldGuy_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 199
+        y: 74
+        width: 123
+        height: 370
+      spriteId: 5d0e39a3471f64b4c892921699195718
+    - name: BaldGuy_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 184
+        y: 74
+        width: 141
+        height: 375
+      spriteId: 532f49b73c126cb4d82fb262dd40314e
+    - name: BaldGuy_Frame_23
+      frameIndex: 23
+      additiveSortOrder: 0
+      cellRect:
+        x: 165
+        y: 90
+        width: 164
+        height: 358
+      spriteId: dd3067ad021aef0418f62df7b0032adc
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 512, y: 512}
