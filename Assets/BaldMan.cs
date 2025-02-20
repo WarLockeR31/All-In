@@ -46,12 +46,6 @@ public class BaldMan : MonoBehaviour
 
     void Update()
     {
-        if (!player || agent.isStopped) return;
-
-        // Обновляем направление движения
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-            agent.SetDestination(player.position);
-
         // Поворачиваем спрайт к игроку (только по оси Y)
         Vector3 direction = transform.position - player.position;
         direction.y = 0; // Игнорируем разницу по высоте
@@ -66,6 +60,15 @@ public class BaldMan : MonoBehaviour
         {
             Attack();
         }
+
+
+
+
+        if (!player || agent.isStopped) return;
+
+        // Обновляем направление движения
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+            agent.SetDestination(player.position);
     }
 
     void Attack()

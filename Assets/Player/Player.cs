@@ -71,7 +71,19 @@ public class Player : MonoBehaviour
         //{
         //    //Debug.Log($"{kvp.Key} -> {kvp.Value}\n");
         //}
+    }
 
+    
 
+    public void TakeDamage(float damage)
+    {
+        if (money <= 0)
+            return;
+        money -= Mathf.RoundToInt(damage);
+
+        if (money <= 0)
+        {
+            Debug.LogWarning("PlayerDead");
+        }
     }
 }
