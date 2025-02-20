@@ -6,12 +6,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+
+
     public int money = 100;
 
     private int playerLevel = 0;
 
-
-    private int damage = 10;
+    [SerializeField]
+    private float damage = 10;
+    public float Damage { get { return damage; } }
 
     public Animator animator;
 
@@ -23,6 +27,22 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI moneyShow;
 
+
+    #region Singleton
+    public static Player Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
 
     public void SetUIActive(bool state)
     {
