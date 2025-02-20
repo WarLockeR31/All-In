@@ -7,16 +7,17 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float maxHealth;
     public float MaxHealth { get { return maxHealth; } }
 
-    [SerializeField] private float curHealth;
-    public float CurHealth { get { return curHealth; } }
-
     [SerializeField] private float speed;
     public float Speed { get { return speed; } }
 
     [SerializeField] private float damage;
     public float Damage { get { return damage; } }
 
-    
+
+    private float curHealth;
+    public float CurHealth { get { return curHealth; } }
+
+
     private Collider col;
     private Player player;
 
@@ -24,14 +25,16 @@ public class EnemyStats : MonoBehaviour
     {
         col = GetComponent<Collider>();
         player = Player.Instance;
+        curHealth = maxHealth;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerAttack"))
+        if (other.isTrigger && other.CompareTag("PlayerAttack"))
         {
             curHealth -= player.Damage;
-            if (curHealth < 0)
+            Debug.Log("AAAAAAAAAAAAAAAAA");
+            if (curHealth <= 0)
                 Dead();
         }
     }
@@ -39,5 +42,6 @@ public class EnemyStats : MonoBehaviour
     private void Dead()
     {
         Destroy(gameObject);
+        ArenaManager.Instance.DecEnemyCount();
     }
 }
