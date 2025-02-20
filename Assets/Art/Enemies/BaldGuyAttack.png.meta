@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -93,275 +93,20 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: BaldGuyAttack_0
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 1104
-        width: 164
-        height: 368
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de0166ae5c4fd4e4ab7f22d32d9560b8
-      internalID: -883266308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_1
-      rect:
-        serializedVersion: 2
-        x: 677
-        y: 1114
-        width: 164
-        height: 358
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f616d56b3807ce4fb4991587339408f
-      internalID: -1891597998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_2
-      rect:
-        serializedVersion: 2
-        x: 1184
-        y: 1114
-        width: 169
-        height: 358
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40471f7b5b0c7f442979d315feb9607b
-      internalID: -697740164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_3
-      rect:
-        serializedVersion: 2
-        x: 1700
-        y: 1114
-        width: 154
-        height: 358
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5804b19d1afafbd4681d0333efe8185c
-      internalID: -807573680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 600
-        width: 180
-        height: 358
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 317e8ed83d8aa6442ad8f9f0d4b40de9
-      internalID: -869527757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_5
-      rect:
-        serializedVersion: 2
-        x: 648
-        y: 587
-        width: 174
-        height: 372
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6913155efab7c854991be5ef57247002
-      internalID: 830781793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_6
-      rect:
-        serializedVersion: 2
-        x: 1165
-        y: 586
-        width: 171
-        height: 378
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cd0e715f9c075842afc78824f970d7d
-      internalID: -1580921337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_7
-      rect:
-        serializedVersion: 2
-        x: 1703
-        y: 586
-        width: 134
-        height: 370
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c1da565cf475ae46a5d3c86094aba28
-      internalID: -793168590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_8
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 74
-        width: 123
-        height: 370
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4601232db371c1a478d0274e171d3ba4
-      internalID: -481742491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_9
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 74
-        width: 141
-        height: 375
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e6dc0c94a62b904c9a61e034008ce7b
-      internalID: 1019190057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BaldGuyAttack_10
-      rect:
-        serializedVersion: 2
-        x: 1188
-        y: 90
-        width: 165
-        height: 358
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1949eaa4948e34f448295b389f9e9386
-      internalID: 88219385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BaldGuyAttack_0: -883266308
-      BaldGuyAttack_1: -1891597998
-      BaldGuyAttack_10: 88219385
-      BaldGuyAttack_2: -697740164
-      BaldGuyAttack_3: -807573680
-      BaldGuyAttack_4: -869527757
-      BaldGuyAttack_5: 830781793
-      BaldGuyAttack_6: -1580921337
-      BaldGuyAttack_7: -793168590
-      BaldGuyAttack_8: -481742491
-      BaldGuyAttack_9: 1019190057
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
