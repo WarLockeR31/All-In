@@ -44,4 +44,12 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
         ArenaManager.Instance.DecEnemyCount();
     }
+
+    public void SetStats(float hp, float dmg, float spd)
+    {
+        maxHealth = hp;
+        curHealth = maxHealth;
+        damage = dmg;
+        speed = spd;
+    }
 }

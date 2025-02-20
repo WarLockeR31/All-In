@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class GameObjectIntPair
+    {
+        public GameObject gameObject;
+        [Range(0, 100)]
+        public int chancePercent;
+    }
+
     #region Singleton
     public static ArenaManager Instance { get; private set; }
 
@@ -25,16 +33,27 @@ public class ArenaManager : MonoBehaviour
     public float timeBetweenWaves = 5f;
 
     [Header("Настройки спавна")]
-    public GameObject[] normalEnemies;
-    public GameObject[] eliteEnemies;
+    public List<GameObjectIntPair> normalEnemies; // Список префабов с вероятностями
+    public List<GameObjectIntPair> eliteEnemies; // Список элитных префабов с вероятностями
     private Transform[] spawnPoints;
     public GameObject spawnPointsParent;
     public float minDistanceFromPlayer = 10f;
+
+    [Header("Коэффициенты увеличения характеристик")]
+    public float increaseStartWave = 5;
+    public float healthIncreasePerWave = 1.1f; // Увеличение здоровья на 10% за волну
+    public float damageIncreasePerWave = 1.05f; // Увеличение урона на 5% за волну
+    public float speedIncreasePerWave = 1.02f; // Увеличение скорости на 2% за волну
 
     private int waveNumber = 0;
     private bool isSpawning = false;
     private HashSet<Transform> occupiedSpawnPoints = new HashSet<Transform>();
     private int curEnemyCount;
+
+    // Приватные коэффициенты для текущей волны
+    private float currentHealthMultiplier = 1f;
+    private float currentDamageMultiplier = 1f;
+    private float currentSpeedMultiplier = 1f;
 
     void Start()
     {
@@ -56,21 +75,37 @@ public class ArenaManager : MonoBehaviour
     void SpawnWave()
     {
         if (isSpawning) return;
+        waveNumber++;
         isSpawning = true;
 
+        // Увеличиваем коэффициенты характеристик после каждой волны
+        if (waveNumber > increaseStartWave)
+        {
+            currentHealthMultiplier *= healthIncreasePerWave;
+            currentDamageMultiplier *= damageIncreasePerWave;
+            currentSpeedMultiplier *= speedIncreasePerWave;
+        }
+
         int eliteCount = waveNumber >= startEliteWave ? Random.Range(1, waveNumber / 2) : 0;
+        if (eliteCount > spawnPoints.Length)
+        {
+            eliteCount = spawnPoints.Length;
+        }
 
         curEnemyCount = Random.Range(waveNumber + 2, waveNumber + 5);
+        if (curEnemyCount > spawnPoints.Length)
+            curEnemyCount = spawnPoints.Length;
+
         int enemyCount = curEnemyCount - eliteCount;
         List<Transform> usedPoints = new List<Transform>();
 
-        //Enemies
+        // Спавн обычных врагов
         for (int i = 0; i < enemyCount; i++)
         {
             SpawnEnemy(normalEnemies);
         }
-        
-        //Elite Enemies
+
+        // Спавн элитных врагов
         if (waveNumber >= startEliteWave)
         {
             for (int i = 0; i < eliteCount; i++)
@@ -79,20 +114,25 @@ public class ArenaManager : MonoBehaviour
             }
         }
 
-        waveNumber++;
         isSpawning = false;
     }
 
-    void SpawnEnemy(GameObject[] enemyArray)
+    void SpawnEnemy(List<GameObjectIntPair> enemyList)
     {
-        if (enemyArray.Length == 0 || spawnPoints.Length == 0) return;
+        if (enemyList.Count == 0 || spawnPoints.Length == 0) return;
 
         Transform spawnPoint = FindAvailableSpawnPoint();
         if (spawnPoint == null) return;
 
-        GameObject enemyPrefab = enemyArray[Random.Range(0, enemyArray.Length)];
+        GameObject enemyPrefab = GetRandomEnemy(enemyList); // Выбираем врага с учетом вероятности
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        // Применяем коэффициенты к характеристикам врага
         EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+        if (enemyStats != null)
+        {
+            enemyStats.SetStats(enemyStats.MaxHealth * currentHealthMultiplier, enemyStats.Damage * currentDamageMultiplier, enemyStats.Speed * currentSpeedMultiplier);
+        }
 
         occupiedSpawnPoints.Add(spawnPoint);
     }
@@ -112,6 +152,33 @@ public class ArenaManager : MonoBehaviour
         return availablePoints.Count > 0
             ? availablePoints[Random.Range(0, availablePoints.Count)]
             : null;
+    }
+
+    GameObject GetRandomEnemy(List<GameObjectIntPair> enemyList)
+    {
+        // Вычисляем общую сумму вероятностей
+        int totalProbability = 0;
+        foreach (var pair in enemyList)
+        {
+            totalProbability += pair.chancePercent;
+        }
+
+        // Генерируем случайное число от 0 до общей суммы вероятностей
+        int randomValue = Random.Range(0, totalProbability);
+
+        // Выбираем врага на основе случайного числа
+        int cumulativeProbability = 0;
+        foreach (var pair in enemyList)
+        {
+            cumulativeProbability += pair.chancePercent;
+            if (randomValue < cumulativeProbability)
+            {
+                return pair.gameObject;
+            }
+        }
+
+        // Если что-то пошло не так, возвращаем первый элемент
+        return enemyList[0].gameObject;
     }
 
     public void FreeSpawnPoints()
