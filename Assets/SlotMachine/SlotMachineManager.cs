@@ -7,7 +7,7 @@ public class SlotMachine : MonoBehaviour
 {
     public SlotSpin[] reels; // Массив барабанов
     public float delayBetweenReels = 0.5f; // Задержка между стартами барабанов
-    public Transform SlotMachineTransform;
+    public RectTransform SlotMachineTransform;
     [SerializeField] private float GoofinessAmount = 2f;
     private bool big = false;
     private bool rotationCheck = false;
@@ -133,14 +133,19 @@ public class SlotMachine : MonoBehaviour
             float scaleChange = 10f* GoofinessAmount * Time.deltaTime;
 
             if (rotationCheck)
+            {
                 SlotMachineTransform.Rotate(new Vector3(0f, 0f, -scaleChange));
+            }
             else
+            {
                 SlotMachineTransform.Rotate(new Vector3(0f, 0f, scaleChange));
+            }
+                
             Debug.Log(SlotMachineTransform.rotation.z);
         }
         else
         {
-            SlotMachineTransform.eulerAngles = Vector3.zero;
+            SlotMachineTransform.localEulerAngles = Vector3.zero;
         }
     }
 
@@ -152,5 +157,10 @@ public class SlotMachine : MonoBehaviour
             if (reels[i].isSpinning) return true;
         }
         return false;
+    }
+
+    private void OnEnable()
+    {
+        SlotMachineTransform.localEulerAngles = Vector3.zero;
     }
 }
