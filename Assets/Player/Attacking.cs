@@ -19,6 +19,8 @@ public class Attacking : MonoBehaviour
 
     private float delay;
 
+    private bool slapOnCoolDown;
+
     [SerializeField]private float delayValue;
 
     private void NextAttack()
@@ -53,8 +55,19 @@ public class Attacking : MonoBehaviour
 
     private void Slap()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (!slapOnCoolDown && Input.GetKeyDown(KeyCode.F))
+        {
             player.animator.SetTrigger("slap");
+            StartCoroutine(SlapCoolDown());
+        }
+            
+    }
+
+    private IEnumerator SlapCoolDown()
+    {
+        slapOnCoolDown = true;
+        yield return new WaitForSeconds(2);
+        slapOnCoolDown = false;
     }
 
     private void InitAttack(attack val)

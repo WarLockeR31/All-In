@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4420241382022007288}
   - component: {fileID: 7859321854276806845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 5797997868683889820}
   - component: {fileID: 5000367892849335756}
   - component: {fileID: 1881640920709006657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EliteEnemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d0bf5f9fc8ddb449cb407bc4f433af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 8
+  attackRange: 5
   attackCooldown: 2
   rotationSpeed: 10
   dashPower: 50
@@ -138,7 +138,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

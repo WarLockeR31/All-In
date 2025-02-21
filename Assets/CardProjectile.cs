@@ -29,6 +29,11 @@ public class CardProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UIManager.Instance.uiPanel.activeSelf)
+        {
+            Destroy(gameObject);
+        }
+
         if (isAutoAiming)
         {
             Vector3 playerPos = player.transform.position;

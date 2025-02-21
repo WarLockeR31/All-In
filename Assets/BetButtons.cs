@@ -40,6 +40,7 @@ public class BetButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         StopAllCoroutines();
         StartCoroutine(GoofyAhhButton());
     }
+
     IEnumerator GoofyAhhButton()
     {
         Vector2 targetSize = originalSize * (2-scaleFactor); // Уменьшаем кнопку

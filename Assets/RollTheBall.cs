@@ -8,8 +8,8 @@ public class RollTheBall : MonoBehaviour
 
     public float StartingSpeed = 0;
     public float currentSpeed;
-    public Transform pivot;
-    public Transform ball;
+    public RectTransform pivot;
+    public RectTransform ball;
 
     private Vector3 newPoint;
 
@@ -30,10 +30,10 @@ public class RollTheBall : MonoBehaviour
     void Update()
     {
         if (stopped) return;
-        ball.position = ball.position+new Vector3((float)dx(currentSpeed), (float)dy(currentSpeed));
-        ball.RotateAround(pivot.position, Vector3.forward, currentSpeed * Time.deltaTime);
-        ball.RotateAround(ball.position, Vector3.forward, currentSpeed/2 * Time.deltaTime);
-        pivot.RotateAround(pivot.position, Vector3.forward, -currentSpeed * Time.deltaTime);
+        ball.localPosition = ball.localPosition + new Vector3((float)dx(currentSpeed), (float)dy(currentSpeed));
+        ball.RotateAround(pivot.position, transform.forward, currentSpeed * Time.deltaTime);
+        ball.RotateAround(ball.position, transform.forward, currentSpeed/2 * Time.deltaTime);
+        pivot.RotateAround(pivot.position, transform.forward, -currentSpeed * Time.deltaTime);
     }
 
 
