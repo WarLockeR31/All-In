@@ -6,14 +6,16 @@ TagManager:
   tags:
   - PlayerAttack
   - PlayerAttackStun
+  - Enemy
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemyIgnore
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 

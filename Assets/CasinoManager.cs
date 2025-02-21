@@ -17,8 +17,23 @@ public class CasinoManager : MonoBehaviour
     public TextMeshProUGUI Bet;
 
     private bool block;
+    public bool Block { get { return block; } }
 
-    
+    #region Singleton
+    public static CasinoManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
 
     private int currentBet = 0;
 
@@ -130,7 +145,6 @@ public class CasinoManager : MonoBehaviour
     }
     public void StartRoulette()
     {
-
         if (block||currentBet==0||(!ColorButtons[0].GetBool("ispressed")&&!ColorButtons[1].GetBool("ispressed")&&!ColorButtons[2].GetBool("ispressed")))
             return;
         ball.stopped = false;

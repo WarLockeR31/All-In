@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-
-
     public int money = 100;
 
     private int playerLevel = 0;
@@ -79,7 +76,8 @@ public class Player : MonoBehaviour
     {
         if (money <= 0)
             return;
-        money -= Mathf.RoundToInt(damage);
+
+        money -= Mathf.RoundToInt(animator.GetBool("isBlocking") ? damage / 2 : damage);
 
         if (money <= 0)
         {

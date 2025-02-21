@@ -72,7 +72,7 @@ public class ArenaManager : MonoBehaviour
         SpawnWave();
     }
 
-    void SpawnWave()
+    public void SpawnWave()
     {
         if (isSpawning) return;
         waveNumber++;
@@ -86,13 +86,13 @@ public class ArenaManager : MonoBehaviour
             currentSpeedMultiplier *= speedIncreasePerWave;
         }
 
-        int eliteCount = waveNumber >= startEliteWave ? Random.Range(1, waveNumber / 2) : 0;
+        int eliteCount = waveNumber >= startEliteWave ? Random.Range(waveNumber / 2 - 2, waveNumber / 2) : 0;
         if (eliteCount > spawnPoints.Length)
         {
             eliteCount = spawnPoints.Length;
         }
 
-        curEnemyCount = Random.Range(waveNumber + 2, waveNumber + 5);
+        curEnemyCount = Random.Range(waveNumber + 1, waveNumber + 4);
         if (curEnemyCount > spawnPoints.Length)
             curEnemyCount = spawnPoints.Length;
 
@@ -192,7 +192,8 @@ public class ArenaManager : MonoBehaviour
         if (curEnemyCount == 0)
         {
             FreeSpawnPoints();
-            SpawnWave();
+            UIManager.Instance.ToggleUI();
+            //SpawnWave();
         }
     }
 }

@@ -46,7 +46,7 @@ public class EnemyStats : MonoBehaviour
             TakeDamage();
         }
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
             player.TakeDamage(damage);
         }
@@ -57,7 +57,7 @@ public class EnemyStats : MonoBehaviour
         if (curHealth <= 0)
             return;
         curHealth -= player.Damage;
-        Debug.Log("AAAAAAAAAAAAAAAAA");
+        //Debug.Log("AAAAAAAAAAAAAAAAA");
 
         StartCoroutine(FlashRed());
 
@@ -112,7 +112,7 @@ public class EnemyStats : MonoBehaviour
     {
         anim.SetBool("isDead", true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         ArenaManager.Instance.DecEnemyCount();
         Destroy(gameObject);

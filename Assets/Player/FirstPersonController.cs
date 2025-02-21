@@ -100,9 +100,9 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            manager.ToggleUI();
-        }
+        //if (Input.GetKeyDown(KeyCode.P)) {
+        //    manager.ToggleUI();
+        //}
         if (player.isUIOpen)
         {      
             return;
