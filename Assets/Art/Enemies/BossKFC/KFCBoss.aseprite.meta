@@ -1,0 +1,661 @@
+fileFormatVersion: 2
+guid: 196cbb2521f97dd4e999143cac0f72c1
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: KFCBoss_Frame_0
+    originalName: 
+    pivot: {x: 0.5335463, y: -0.051867224}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 1498
+      width: 313
+      height: 482
+    spriteID: c883b68bde2d03a40928abab7d58fd1f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 688, y: 1498}
+  - name: KFCBoss_Frame_1
+    originalName: 
+    pivot: {x: 0.5339806, y: -0.007984032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 361
+      y: 1497
+      width: 309
+      height: 501
+    spriteID: e76266956e82def40b95778e4d85d1f5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 361, y: 1497}
+  - name: KFCBoss_Frame_2
+    originalName: 
+    pivot: {x: 0.5305466, y: -0.030612243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 1000
+      width: 311
+      height: 490
+    spriteID: 11cc71cf41dd0264bab2e2048f252d92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 688, y: 1000}
+  - name: KFCBoss_Frame_3
+    originalName: 
+    pivot: {x: 0.5335463, y: -0.051867224}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1011
+      y: 4
+      width: 313
+      height: 482
+    spriteID: 5c9c451d5ba1bf24ea61823cce13e6c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1011, y: 4}
+  - name: KFCBoss_Frame_4
+    originalName: 
+    pivot: {x: 0.53205127, y: -0.007984032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1498
+      width: 312
+      height: 501
+    spriteID: 3497654c9952fed4f93c7d6639cac5f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1498}
+  - name: KFCBoss_Frame_5
+    originalName: 
+    pivot: {x: 0.53333336, y: -0.030612243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 4
+      width: 315
+      height: 490
+    spriteID: e6019b7f9f426bd428dd7f4a19d8cda0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 688, y: 4}
+  - name: KFCBoss_Frame_6
+    originalName: 
+    pivot: {x: 0.53943217, y: -0.030674845}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 361
+      y: 1000
+      width: 317
+      height: 489
+    spriteID: b9f653fba784c7744833fdfdf67aa4a2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 361, y: 1000}
+  - name: KFCBoss_Frame_7
+    originalName: 
+    pivot: {x: 0.5377358, y: -0.030612243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 361
+      y: 502
+      width: 318
+      height: 490
+    spriteID: 6203dd3e815fe7e4cb0e0035ffe73e36
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 361, y: 502}
+  - name: KFCBoss_Frame_8
+    originalName: 
+    pivot: {x: 0.53605014, y: -0.030612243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 361
+      y: 4
+      width: 319
+      height: 490
+    spriteID: 95f50bb17f4e7b647afbdc849d1239c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 361, y: 4}
+  - name: KFCBoss_Frame_9
+    originalName: 
+    pivot: {x: 0.538682, y: -0.016260162}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 349
+      height: 492
+    spriteID: 30c67b9ac6f920743b171bf64227bdaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: KFCBoss_Frame_10
+    originalName: 
+    pivot: {x: 0.5329513, y: -0.016260162}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 504
+      width: 349
+      height: 492
+    spriteID: 148658139f2a5374ebd7aad95f3f8cac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 504}
+  - name: KFCBoss_Frame_11
+    originalName: 
+    pivot: {x: 0.56119406, y: -0.030864196}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1004
+      width: 335
+      height: 486
+    spriteID: b79648c106db56544a6dd83bf5f32505
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1004}
+  - name: KFCBoss_Frame_12
+    originalName: 
+    pivot: {x: 0.63909775, y: -0.030864196}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1011
+      y: 494
+      width: 266
+      height: 486
+    spriteID: 11b3c1fcd72046747bf24009ff46a96d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1011, y: 494}
+  - name: KFCBoss_Frame_13
+    originalName: 
+    pivot: {x: 0.63773584, y: -0.030864196}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1011
+      y: 988
+      width: 265
+      height: 486
+    spriteID: d1da7987cbe5a4d408fa0ddff8d6b335
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1011, y: 988}
+  - name: KFCBoss_Frame_14
+    originalName: 
+    pivot: {x: 0.63773584, y: -0.030864196}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1011
+      y: 1482
+      width: 265
+      height: 486
+    spriteID: 579a15b9f72155b4d9822e59f416bac4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1011, y: 1482}
+  - name: KFCBoss_Frame_15
+    originalName: 
+    pivot: {x: 0.53333336, y: -0.030612243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 502
+      width: 315
+      height: 490
+    spriteID: c076a1e0d647f1344b75e1ba0afa1dcc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 688, y: 502}
+  - name: KFCBoss_Frame_16
+    originalName: 
+    pivot: {x: 0.5609756, y: -0.026442308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1332
+      y: 4
+      width: 287
+      height: 416
+    spriteID: 8cbf1f21b4d914742b8360ae6873764d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1332, y: 4}
+  - name: KFCBoss_Frame_17
+    originalName: 
+    pivot: {x: 0.5609756, y: -0.026442308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1332
+      y: 428
+      width: 287
+      height: 416
+    spriteID: 70734313ef583f54cbf3de6775f889aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1332, y: 428}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 83935023
+    name: KFCBoss
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: KFCBoss_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 89
+        y: 25
+        width: 313
+        height: 482
+      spriteId: c883b68bde2d03a40928abab7d58fd1f
+    - name: KFCBoss_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 91
+        y: 4
+        width: 309
+        height: 501
+      spriteId: e76266956e82def40b95778e4d85d1f5
+    - name: KFCBoss_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 91
+        y: 15
+        width: 311
+        height: 490
+      spriteId: 11cc71cf41dd0264bab2e2048f252d92
+    - name: KFCBoss_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 89
+        y: 25
+        width: 313
+        height: 482
+      spriteId: 5c9c451d5ba1bf24ea61823cce13e6c7
+    - name: KFCBoss_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 90
+        y: 4
+        width: 312
+        height: 501
+      spriteId: 3497654c9952fed4f93c7d6639cac5f9
+    - name: KFCBoss_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 88
+        y: 15
+        width: 315
+        height: 490
+      spriteId: e6019b7f9f426bd428dd7f4a19d8cda0
+    - name: KFCBoss_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 85
+        y: 15
+        width: 317
+        height: 489
+      spriteId: b9f653fba784c7744833fdfdf67aa4a2
+    - name: KFCBoss_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 85
+        y: 15
+        width: 318
+        height: 490
+      spriteId: 6203dd3e815fe7e4cb0e0035ffe73e36
+    - name: KFCBoss_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 85
+        y: 15
+        width: 319
+        height: 490
+      spriteId: 95f50bb17f4e7b647afbdc849d1239c6
+    - name: KFCBoss_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 68
+        y: 8
+        width: 349
+        height: 492
+      spriteId: 30c67b9ac6f920743b171bf64227bdaf
+    - name: KFCBoss_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 70
+        y: 8
+        width: 349
+        height: 492
+      spriteId: 148658139f2a5374ebd7aad95f3f8cac
+    - name: KFCBoss_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 68
+        y: 15
+        width: 335
+        height: 486
+      spriteId: b79648c106db56544a6dd83bf5f32505
+    - name: KFCBoss_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 86
+        y: 15
+        width: 266
+        height: 486
+      spriteId: 11b3c1fcd72046747bf24009ff46a96d
+    - name: KFCBoss_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 87
+        y: 15
+        width: 265
+        height: 486
+      spriteId: d1da7987cbe5a4d408fa0ddff8d6b335
+    - name: KFCBoss_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 87
+        y: 15
+        width: 265
+        height: 486
+      spriteId: 579a15b9f72155b4d9822e59f416bac4
+    - name: KFCBoss_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 88
+        y: 15
+        width: 315
+        height: 490
+      spriteId: c076a1e0d647f1344b75e1ba0afa1dcc
+    - name: KFCBoss_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 95
+        y: 11
+        width: 287
+        height: 416
+      spriteId: 8cbf1f21b4d914742b8360ae6873764d
+    - name: KFCBoss_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 95
+        y: 11
+        width: 287
+        height: 416
+      spriteId: 70734313ef583f54cbf3de6775f889aa
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 512, y: 512}
