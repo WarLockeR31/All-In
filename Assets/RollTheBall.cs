@@ -17,8 +17,8 @@ public class RollTheBall : MonoBehaviour
 
 
 
-    private Func<double, double> dx = x => .2*Math.Sin(Math.Pow(6f * Math.Sin(2 * x), 2f));
-    private Func<double, double> dy = x => .2*Math.Sin(Math.Tan(x));
+    private Func<double, double> dx = x => .15*Math.Sin(Math.Pow(6f * Math.Sin(2 * x), 2f));
+    private Func<double, double> dy = x => .15*Math.Sin(Math.Tan(x));
     void Start()
     {
         stopped = true;

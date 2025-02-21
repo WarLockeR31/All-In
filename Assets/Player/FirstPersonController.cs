@@ -61,6 +61,10 @@ public class FirstPersonController : MonoBehaviour
     private float wallSlideCDTimer;
     public LayerMask wallLayer; // Указываем в инспекторе, какие слои считаем стенами
 
+
+    private Vector3 oldPosition;
+    private float oldDeltaTime;
+
     public enum PlayerState
     {
         Idle,
@@ -92,6 +96,8 @@ public class FirstPersonController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        oldPosition = transform.position;
+        oldDeltaTime = Time.deltaTime;
 
         Camera.main.transform.localRotation = Quaternion.Euler(0, 0f, 0f);
     }
@@ -107,6 +113,16 @@ public class FirstPersonController : MonoBehaviour
         {      
             return;
         }
+
+
+        Vector3 newLateralPosition = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 oldLateralPosition = new Vector3(oldPosition.x, 0, oldPosition.z);
+        
+        velocity = Vector3.Lerp(velocity, (newLateralPosition - oldLateralPosition) / oldDeltaTime, 0.3f);
+        verticalVelocity = Mathf.Lerp(verticalVelocity, (transform.position.y - oldPosition.y) / oldDeltaTime, 0.3f);
+
+        oldPosition = transform.position;
+        oldDeltaTime = Time.deltaTime;
 
         Look();
 
@@ -171,7 +187,7 @@ public class FirstPersonController : MonoBehaviour
 
     void PhysWalking()
     {
-        verticalVelocity = -2f;
+        verticalVelocity = -10f;
         canDoubleJump = true;
 
         Vector3 lateralVelocity = new Vector3(velocity.x, 0, velocity.z);
@@ -276,7 +292,7 @@ public class FirstPersonController : MonoBehaviour
             Jump();
             return;
         }
-        if (currentState == PlayerState.Falling && (coyoteTimeCounter > 0 || canDoubleJump) && player.unlockables[(int)Player.abilities.doublejump])
+        if (currentState == PlayerState.Falling && (coyoteTimeCounter > 0 || canDoubleJump && player.unlockables[(int)Player.abilities.doublejump]))
         {
             Jump();
             return;

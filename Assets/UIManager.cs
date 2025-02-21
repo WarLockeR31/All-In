@@ -37,6 +37,10 @@ public class UIManager : MonoBehaviour
         {
             ArenaManager.Instance.SpawnWave();
         }
+        else
+        {
+            Attacking.Instance.Unblock();
+        }
     }
 }
 

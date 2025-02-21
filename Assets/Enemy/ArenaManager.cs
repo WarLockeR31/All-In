@@ -122,7 +122,11 @@ public class ArenaManager : MonoBehaviour
         if (enemyList.Count == 0 || spawnPoints.Length == 0) return;
 
         Transform spawnPoint = FindAvailableSpawnPoint();
-        if (spawnPoint == null) return;
+        if (spawnPoint == null)
+        {
+            curEnemyCount--;
+            return;
+        }
 
         GameObject enemyPrefab = GetRandomEnemy(enemyList); // Выбираем врага с учетом вероятности
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -183,7 +187,7 @@ public class ArenaManager : MonoBehaviour
 
     public void FreeSpawnPoints()
     {
-        occupiedSpawnPoints.Clear();
+        occupiedSpawnPoints = new HashSet<Transform>();
     }
 
     public void DecEnemyCount()

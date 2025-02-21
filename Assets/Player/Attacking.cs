@@ -23,6 +23,23 @@ public class Attacking : MonoBehaviour
 
     [SerializeField]private float delayValue;
 
+
+    #region Singleton
+    public static Attacking Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+
     private void NextAttack()
     {
         switch(nextAttack)
@@ -133,13 +150,8 @@ public class Attacking : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
-            StopBlocking();
-            player.animator.ResetTrigger("jab");
-            player.animator.ResetTrigger("slap");
-            player.animator.ResetTrigger("slam");
-            player.animator.ResetTrigger("kick");
-            nextAttack = attack.jab;
-            attacks.Clear();
+            //|| Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0)
+            Unblock();
         }
     }
     private void StartBlocking()
@@ -149,6 +161,17 @@ public class Attacking : MonoBehaviour
     private void StopBlocking()
     {
         player.animator.SetBool("isBlocking", false);
+    }
+
+    public void Unblock()
+    {
+        StopBlocking();
+        player.animator.ResetTrigger("jab");
+        player.animator.ResetTrigger("slap");
+        player.animator.ResetTrigger("slam");
+        player.animator.ResetTrigger("kick");
+        nextAttack = attack.jab;
+        attacks.Clear();
     }
     //=================================================================================================
 
@@ -173,11 +196,13 @@ public class Attacking : MonoBehaviour
         if (player.isUIOpen)
             return; 
             
-        if (!player.animator.GetBool("isBlocking"))
-        {
-            InputManager();
-            Slap();
-        }
+        //if (!player.animator.GetBool("isBlocking"))
+        //{
+            
+        //}
+        InputManager();
+        Slap();
+
         Block();
         ResetCombination();
     }

@@ -118,7 +118,7 @@ public class Dealer : MonoBehaviour
     {
         Vector3 playerPos = player.position;
         Vector3 dirToPlayer = (playerPos - projectileStartPos.position).normalized;
-        GameObject cardObj = Instantiate(projectilePrefab, projectileStartPos.position + dirToPlayer, Quaternion.Euler(new Vector3(80, 0, 0)));
+        GameObject cardObj = Instantiate(projectilePrefab, projectileStartPos.position + dirToPlayer, Quaternion.Euler(new Vector3(70, 0, 0)));
         CardProjectile card = cardObj.GetComponent<CardProjectile>();
         card.SetDamage(stats.Damage);
     }

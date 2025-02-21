@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI moneyShow;
 
+    private bool isInvincible;
 
     #region Singleton
     public static Player Instance { get; private set; }
@@ -74,14 +75,22 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (money <= 0)
+        if (money <= 0 || isInvincible)
             return;
 
         money -= Mathf.RoundToInt(animator.GetBool("isBlocking") ? damage / 2 : damage);
+        StartCoroutine(Invincibility());
 
         if (money <= 0)
         {
             Debug.LogWarning("PlayerDead");
         }
+    }
+
+    private IEnumerator Invincibility()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(0.5f);
+        isInvincible = false;
     }
 }

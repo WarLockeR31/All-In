@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139ee47890d1cf64dbb878b2340bb609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoAimSeconds: 2
-  projectileSpeed: 10
-  rotationSpeed: 200
+  autoAimSeconds: 0.5
+  projectileSpeed: 20
+  rotationSpeed: 600
 --- !u!212 &5951157016470346295
 SpriteRenderer:
   m_ObjectHideFlags: 0
