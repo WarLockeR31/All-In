@@ -77,7 +77,7 @@ public class BaldMan : MonoBehaviour
         agent.isStopped = true;
 
         animator.SetTrigger("isAttacking");
-        Debug.Log("Attacking player!");
+        //Debug.Log("Attacking player!");
 
         
         agent.isStopped = false;
