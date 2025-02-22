@@ -23,7 +23,7 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         // Ќажатие клавиши Escape ставит/снимает паузу
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)&&!Player.Instance.isDead)
         {
             if (isPaused)
                 ResumeGame();
@@ -37,11 +37,10 @@ public class PauseManager : MonoBehaviour
         Attacking.Instance.enabled = false;
         Player.Instance.GetComponent<FirstPersonController>().enabled = false;
         isPaused = true;
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0f;
         pause.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void ResumeGame()

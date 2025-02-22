@@ -10,8 +10,10 @@ public class MainMenu : MonoBehaviour
     public GameObject controls;
     public void PlayGame()
     {
+        Time.timeScale = 1f;
         // Загрузка следующей сцены по порядку в Build Settings
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     // Метод для перехода в настройки

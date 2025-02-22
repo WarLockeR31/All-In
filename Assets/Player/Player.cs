@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,6 +16,15 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource uiClick;
 
     public int money = 100;
+
+
+    public GameObject EndGuy;
+
+    public GameObject Hands;
+
+    public TextMeshProUGUI endtext;
+
+    public bool isDead = false;
 
 
     [SerializeField]
@@ -84,7 +95,24 @@ public class Player : MonoBehaviour
         //}
     }
 
-    
+    public void Death()
+    {
+        EndGuy.SetActive(true);
+        Hands.SetActive(false);
+        isDead = true;
+        endtext.text = (ArenaManager.Instance.waveNumber -1).ToString();
+        Attacking.Instance.enabled = false;
+        Player.Instance.GetComponent<FirstPersonController>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0f;
+    }
+
+    public void tryDead()
+    {
+        if (money<=0)
+            Death();
+    }
 
     public void TakeDamage(float damage)
     {
@@ -98,7 +126,7 @@ public class Player : MonoBehaviour
 
         if (money <= 0)
         {
-            Debug.LogWarning("PlayerDead");
+            Death();
         }
     }
 

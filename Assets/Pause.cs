@@ -24,6 +24,7 @@ public class Pause : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void OpenOptions()

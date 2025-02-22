@@ -125,6 +125,7 @@ public class CasinoManager : MonoBehaviour
 
             rouletteWinSound.Play();
         }
+        Player.Instance.tryDead();
         Reset();
             
     }

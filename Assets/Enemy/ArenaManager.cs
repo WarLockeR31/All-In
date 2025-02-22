@@ -45,7 +45,7 @@ public class ArenaManager : MonoBehaviour
     public float damageIncreasePerWave = 1.05f; // Увеличение урона на 5% за волну
     public float speedIncreasePerWave = 1.02f; // Увеличение скорости на 2% за волну
 
-    private int waveNumber = 0;
+    public int waveNumber = 1;
     private bool isSpawning = false;
     private HashSet<Transform> occupiedSpawnPoints = new HashSet<Transform>();
     private int curEnemyCount;
@@ -75,7 +75,7 @@ public class ArenaManager : MonoBehaviour
     public void SpawnWave()
     {
         if (isSpawning) return;
-        waveNumber++;
+        
         isSpawning = true;
 
         // Увеличиваем коэффициенты характеристик после каждой волны
@@ -193,6 +193,7 @@ public class ArenaManager : MonoBehaviour
 
     public void FreeSpawnPoints()
     {
+        waveNumber++;
         occupiedSpawnPoints = new HashSet<Transform>();
     }
 

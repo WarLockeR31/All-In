@@ -11,6 +11,7 @@ public class FirstPersonController : MonoBehaviour
 
     private float _stepCooldown;
 
+    private bool SKIBIDI;
 
     private UIManager manager;
 
@@ -112,25 +113,32 @@ public class FirstPersonController : MonoBehaviour
     }
     void Start()
     {
+        StartCoroutine(InvokePhys());
         pm = PauseManager.Instance;
         manager = GetComponent<UIManager>();
         player = GetComponent<Player>();
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        oldPosition = transform.position;
-        oldDeltaTime = Time.deltaTime;
+  
 
         Camera.main.transform.localRotation = Quaternion.Euler(0, 0f, 0f);
     }
     
+    private IEnumerator InvokePhys()
+    {
+        SKIBIDI = false;
+        yield return new WaitForSeconds(0.05f);
+        SKIBIDI = true;
+        oldPosition = transform.position;
+        oldDeltaTime = Time.deltaTime;
+    }
+
 
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P)) {
-        //    manager.ToggleUI();
-        //}
+        if (!SKIBIDI) return;
         if (player.isUIOpen || pm.isPaused)
         {      
             return;
