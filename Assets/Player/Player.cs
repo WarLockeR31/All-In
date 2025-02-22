@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     public int money = 100;
 
-    private int playerLevel = 0;
 
     [SerializeField]
     private float damage = 10;

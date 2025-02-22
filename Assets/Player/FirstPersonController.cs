@@ -85,6 +85,7 @@ public class FirstPersonController : MonoBehaviour
 
     private Player player;
 
+    private PauseManager pm;
 
     private PlayerState currentState;
 
@@ -111,6 +112,7 @@ public class FirstPersonController : MonoBehaviour
     }
     void Start()
     {
+        pm = PauseManager.Instance;
         manager = GetComponent<UIManager>();
         player = GetComponent<Player>();
         controller = GetComponent<CharacterController>();
@@ -129,7 +131,7 @@ public class FirstPersonController : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.P)) {
         //    manager.ToggleUI();
         //}
-        if (player.isUIOpen)
+        if (player.isUIOpen || pm.isPaused)
         {      
             return;
         }
