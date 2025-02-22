@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
+    [SerializeField] private AudioSource _footstepAudio;
+    [SerializeField] private AudioSource _jumpAudio;
+    [SerializeField] private AudioClip[] _footstepClips;
+    [SerializeField] private float _pitchVariation = 0.1f; // Вариация высоты звука
+    [SerializeField] private float _stepDelay = 0.5f;
+
+    private float _stepCooldown;
+
 
     private UIManager manager;
 
@@ -87,8 +95,20 @@ public class FirstPersonController : MonoBehaviour
         Debug.Log("State Changed To: " + currentState);
     }
 
-   
 
+    private void PlayRandomFootstep()
+    {
+        if (_footstepClips.Length == 0) return;
+
+        // Выбор случайного звука
+        int randomIndex = Random.Range(0, _footstepClips.Length);
+        _footstepAudio.clip = _footstepClips[randomIndex];
+
+        // Добавление вариативности высоты звука (опционально)
+        _footstepAudio.pitch = Random.Range(1 - _pitchVariation, 1 + _pitchVariation);
+
+        _footstepAudio.Play();
+    }
     void Start()
     {
         manager = GetComponent<UIManager>();
@@ -133,6 +153,12 @@ public class FirstPersonController : MonoBehaviour
         isGrounded = controller.isGrounded;
         coyoteTimeCounter = isGrounded ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
 
+        if (currentState != PlayerState.Walking)
+        {
+            _footstepAudio.Stop();
+            _stepCooldown = 0;
+        }
+
         switch (currentState)
         {
             case PlayerState.Idle:
@@ -144,6 +170,14 @@ public class FirstPersonController : MonoBehaviour
                 if (velocity.magnitude == 0) ChangeState(PlayerState.Idle);
                 if (!isGrounded) ChangeState(PlayerState.Falling);
                 PhysWalking();
+
+                _stepCooldown -= Time.deltaTime;
+                if (_stepCooldown <= 0)
+                {
+                    PlayRandomFootstep();
+                    _stepCooldown = _stepDelay;
+                }
+
                 break;
 
             case PlayerState.Falling:
@@ -227,6 +261,8 @@ public class FirstPersonController : MonoBehaviour
 
 
         velocity = lateralSpeed * Direction + Direction * acceleration * Time.deltaTime;
+
+
     }
 
     void PhysFalling()
@@ -301,6 +337,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Jump()
     {
+        _jumpAudio.Play();
+
         if (currentState == PlayerState.Falling && coyoteTimeCounter <= 0 && canDoubleJump)
         {
             canDoubleJump = false;

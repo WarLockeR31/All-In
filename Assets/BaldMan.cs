@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class BaldMan : MonoBehaviour
 {
+    [SerializeField] private AudioSource _punchAudio;
+
     [Header("Settings")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 2f;
@@ -82,5 +84,16 @@ public class BaldMan : MonoBehaviour
         
         agent.isStopped = false;
         canAttack = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            if (!player.GetComponent<Player>().IsInvincible)
+            {
+                _punchAudio.Play();
+            }
+        }
     }
 }

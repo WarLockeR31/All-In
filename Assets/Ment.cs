@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class Ment : MonoBehaviour
 {
+    [SerializeField] private AudioSource _punchAudio;
+
     [Header("Settings")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 2f;
@@ -121,5 +123,16 @@ public class Ment : MonoBehaviour
         }
 
         isDashing = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            if (!player.GetComponent<Player>().IsInvincible)
+            {
+                _punchAudio.Play();
+            }
+        }
     }
 }

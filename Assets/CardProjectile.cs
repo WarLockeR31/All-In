@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CardProjectile : MonoBehaviour
 {
+    [SerializeField] private AudioSource _cardHitAudio;
+
+
     [SerializeField] private float autoAimSeconds;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float rotationSpeed;
@@ -50,8 +53,19 @@ public class CardProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (!player.IsInvincible)
+            {
+                _cardHitAudio.Play();
+            }
+
             player.TakeDamage(damage);
-            Destroy(gameObject);
+            
+            GetComponent<Collider>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            isAutoAiming = false;
+            direction = Vector3.zero;
+
+            Destroy(gameObject, 1);
             return;
         }
 

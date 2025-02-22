@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private AudioSource jab;
+    [SerializeField] private AudioSource slam;
+    [SerializeField] private AudioSource kick;
+    [SerializeField] private AudioSource slap;
+
     public int money = 100;
 
     private int playerLevel = 0;
@@ -25,6 +30,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI moneyShow;
 
     private bool isInvincible;
+    public bool IsInvincible {  get { return isInvincible; } }
 
     #region Singleton
     public static Player Instance { get; private set; }
@@ -120,5 +126,33 @@ public class Player : MonoBehaviour
 
         Time.timeScale = 1f;
         //Time.fixedDeltaTime = 0.02f;
+    }
+
+    public void PlayPunchSound()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jab"))
+        {
+            if (jab.isPlaying)
+                return;
+            jab.Play();
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Slap"))
+        {
+            if (slap.isPlaying)
+                return;
+            slap.Play();
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Slam"))
+        {
+            if (slam.isPlaying)
+                return;
+            slam.Play();
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick"))
+        {
+            if (kick.isPlaying)
+                return;
+            kick.Play();
+        }
     }
 }
