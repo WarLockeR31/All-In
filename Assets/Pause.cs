@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
+    public GameObject settings;
     public GameObject help;
     public GameObject controls;
     // Start is called before the first frame update
@@ -18,12 +19,17 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void OpenOptions()
+    {
+        settings.SetActive(true);
+    }
     public void ShowControls()
     {
         controls.SetActive(!controls.activeSelf);
     }
     public void OnBack()
     {
+        settings.SetActive(false);
         help.SetActive(false);
         controls.SetActive(false);
     }
