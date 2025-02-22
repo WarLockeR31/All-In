@@ -6,6 +6,9 @@ using static UnityEngine.UI.Image;
 
 public class Dealer : MonoBehaviour
 {
+    [SerializeField] private AudioSource _throwCardAudio;
+
+
     [Header("Settings")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 2f;
@@ -116,6 +119,8 @@ public class Dealer : MonoBehaviour
 
     public void SpawnProjetile()
     {
+        _throwCardAudio.Play();
+
         Vector3 playerPos = player.position;
         Vector3 dirToPlayer = (playerPos - projectileStartPos.position).normalized;
         GameObject cardObj = Instantiate(projectilePrefab, projectileStartPos.position + dirToPlayer, Quaternion.Euler(new Vector3(70, 0, 0)));

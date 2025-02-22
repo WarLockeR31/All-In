@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
-
     [SerializeField] private float maxHealth;
     public float MaxHealth { get { return maxHealth; } }
 
@@ -61,6 +60,10 @@ public class EnemyStats : MonoBehaviour
 
         StartCoroutine(FlashRed());
         player.TriggerSlowmo();
+
+        player.PlayPunchSound();
+       
+
 
         if (curHealth <= 0)
             StartCoroutine(Dead());
