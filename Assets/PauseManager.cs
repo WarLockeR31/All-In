@@ -45,8 +45,9 @@ public class PauseManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        Cursor.lockState = UIManager.Instance.uiPanel.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = UIManager.Instance.uiPanel.activeSelf;
         Time.timeScale = 1;
 
         

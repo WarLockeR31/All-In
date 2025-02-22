@@ -29,7 +29,7 @@ public class RollTheBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopped) return;
+        if (stopped || PauseManager.Instance.isPaused) return;
         ball.localPosition = ball.localPosition + new Vector3((float)dx(currentSpeed), (float)dy(currentSpeed));
         ball.RotateAround(pivot.position, transform.forward, currentSpeed * Time.deltaTime);
         ball.RotateAround(ball.position, transform.forward, currentSpeed/2 * Time.deltaTime);

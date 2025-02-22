@@ -15,8 +15,7 @@ public class Pause : MonoBehaviour
     // Метод для выхода из игры
     public void QuitGame()
     {
-        Debug.Log("Игра закрыта!");
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
     public void ShowControls()
