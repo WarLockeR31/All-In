@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     // Метод для запуска игры
     public GameObject settings;
     public GameObject help;
+    public GameObject controls;
     public void PlayGame()
     {
         // Загрузка следующей сцены по порядку в Build Settings
@@ -29,9 +30,16 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void ShowControls()
+    {
+        controls.SetActive(!controls.activeSelf);
+    }
+
+
     public void OnBack()
     {
         settings.SetActive(false);
         help.SetActive(false);
+        controls.SetActive(false);
     }
 }
