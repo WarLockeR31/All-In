@@ -34,10 +34,12 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Player.Instance.GetComponent<FirstPersonController>().enabled = false;
+        isPaused = true;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
-        isPaused = true;
         pause.SetActive(true);
     }
 
@@ -46,8 +48,12 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        isPaused = false;
+
+        
         pause.SetActive(false);
+
+        isPaused = false;
+        Player.Instance.GetComponent<FirstPersonController>().enabled = true;
+
     }
 }

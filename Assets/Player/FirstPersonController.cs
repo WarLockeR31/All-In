@@ -139,12 +139,12 @@ public class FirstPersonController : MonoBehaviour
 
         Vector3 newLateralPosition = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3 oldLateralPosition = new Vector3(oldPosition.x, 0, oldPosition.z);
-        
-        velocity = Vector3.Lerp(velocity, (newLateralPosition - oldLateralPosition) / oldDeltaTime, 0.3f);
-        verticalVelocity = Mathf.Lerp(verticalVelocity, (transform.position.y - oldPosition.y) / oldDeltaTime, 0.3f);
+
+        velocity = Vector3.Lerp(velocity, (newLateralPosition - oldLateralPosition) / Time.deltaTime, 0.3f);
+        verticalVelocity = Mathf.Lerp(verticalVelocity, (transform.position.y - oldPosition.y) / Time.deltaTime, 0.3f);
 
         oldPosition = transform.position;
-        oldDeltaTime = Time.deltaTime;
+       // oldDeltaTime = ;
 
         Look();
 
