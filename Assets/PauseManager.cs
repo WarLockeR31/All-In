@@ -34,6 +34,7 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Attacking.Instance.enabled = false;
         Player.Instance.GetComponent<FirstPersonController>().enabled = false;
         isPaused = true;
 
@@ -55,6 +56,7 @@ public class PauseManager : MonoBehaviour
 
         isPaused = false;
         Player.Instance.GetComponent<FirstPersonController>().enabled = true;
+        Attacking.Instance.enabled = true;
 
     }
 }

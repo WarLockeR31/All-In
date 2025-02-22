@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Ment : MonoBehaviour
 {
+    [SerializeField] private AudioSource agroSound;
     [SerializeField] private AudioSource _punchAudio;
 
     [Header("Settings")]
@@ -86,6 +87,7 @@ public class Ment : MonoBehaviour
         canAttack = false;
         agent.isStopped = true;
         agent.ResetPath();
+        agroSound.Play();
 
         animator.SetTrigger("isAttacking");
         //Debug.Log("Attacking player!");

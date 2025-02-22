@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Grappling : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource _hookAudio;
 
     private Player player;
 
@@ -75,11 +75,15 @@ public class Grappling : MonoBehaviour
             grapplingEnemy = hit.transform.CompareTag("Enemy");
             grappedEnemy = grapplingEnemy ? hit.transform : null;
 
+            _hookAudio.Play();
+
             Invoke(nameof(ExecuteGrapple), grappleDelayTime);
         }
         else
         {
             grapplePoint = cam.position + cam.forward * maxGrappleDistance;
+
+            _hookAudio.Play();
 
             Invoke(nameof(StopGrapple), grappleDelayTime);
         }
@@ -147,12 +151,14 @@ public class Grappling : MonoBehaviour
             Vector3 lateralMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z);
             fpc.SetVelocity(lateralMoveDirection * startSpeed);
             fpc.SetVerticalVelocity(moveDirection.y * startSpeed);
-
+            lr.SetPosition(1, grappedEnemy.position);
             // TODO : прит€гивание врага
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        StopGrapple();
     }
 
 

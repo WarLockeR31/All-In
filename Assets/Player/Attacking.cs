@@ -135,7 +135,7 @@ public class Attacking : MonoBehaviour
             }
     }
 
-    private void ResetCombination()
+    public void ResetCombination()
     {
         if (canPress == false&&attacks.Count==0)
             nextAttack = attack.jab;

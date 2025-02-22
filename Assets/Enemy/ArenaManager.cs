@@ -87,6 +87,7 @@ public class ArenaManager : MonoBehaviour
         }
 
         int eliteCount = waveNumber >= startEliteWave ? Random.Range(waveNumber / 2 - 2, waveNumber / 2) : 0;
+        if (eliteCount < 0) eliteCount = 0;
         if (eliteCount > spawnPoints.Length)
         {
             eliteCount = spawnPoints.Length;
@@ -119,7 +120,12 @@ public class ArenaManager : MonoBehaviour
 
     void SpawnEnemy(List<GameObjectIntPair> enemyList)
     {
-        if (enemyList.Count == 0 || spawnPoints.Length == 0) return;
+        if (enemyList.Count == 0 || spawnPoints.Length == 0)
+        {
+            curEnemyCount--;
+            return;
+        }
+
 
         Transform spawnPoint = FindAvailableSpawnPoint();
         if (spawnPoint == null)

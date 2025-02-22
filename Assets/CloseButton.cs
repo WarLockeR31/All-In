@@ -25,20 +25,21 @@ public class CloseButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (block) { return; }
+        if (block || SlotMachine.Instance.IsSpinnig()) { return; }
         animator.SetBool("selected", true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (block) { return; }
+        if (block || SlotMachine.Instance.IsSpinnig()) { return; }
         animator.SetBool("selected", false);
     }
 
 
     public void OnButtonClicked()
     {
-        if (block) { return; }
+        if (block || SlotMachine.Instance.IsSpinnig()) { return; }
+        Player.Instance.UiClick();
         StopAllCoroutines();
         StartCoroutine(GoofyAhhButton());
     }

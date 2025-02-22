@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class BetButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private AudioSource betSound;
+
     private Animator animator;
     private RectTransform buttonRect;
 
@@ -15,6 +17,7 @@ public class BetButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public float animationSpeed = 0.1f; // Скорость анимации
     private void Start()
     {
+        betSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         buttonRect = GetComponent<RectTransform>();
         originalSize = buttonRect.sizeDelta;
@@ -36,6 +39,8 @@ public class BetButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnButtonClicked()
     {
         if (block) return;
+
+        betSound.Play();
         animator.SetBool("ispressed", !animator.GetBool("ispressed"));
         StopAllCoroutines();
         StartCoroutine(GoofyAhhButton());

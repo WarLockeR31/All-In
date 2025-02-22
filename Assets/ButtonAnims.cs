@@ -32,6 +32,7 @@ public class SpinButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnButtonClicked()
     {
+        Player.Instance.UiClick();
         StopAllCoroutines();
         StartCoroutine(GoofyAhhButton());
     }

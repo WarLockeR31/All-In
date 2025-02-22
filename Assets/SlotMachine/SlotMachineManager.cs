@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class SlotMachine : MonoBehaviour
 {
+    [SerializeField] private AudioSource rollSound;
+
     public SlotSpin[] reels; // Массив барабанов
     public float delayBetweenReels = 0.5f; // Задержка между стартами барабанов
     public RectTransform SlotMachineTransform;
@@ -17,6 +19,21 @@ public class SlotMachine : MonoBehaviour
     private List<int> exclusions = new List<int>();
     [SerializeField] private int cost = 50;
 
+    #region Singleton
+    public static SlotMachine Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    #endregion
 
     int RandomWithList(int min, int max, List<int> exclusions)
     { 
@@ -47,6 +64,8 @@ public class SlotMachine : MonoBehaviour
             return;
             StartCoroutine(SpinAllReels());
         player.money = player.money - cost;
+
+        rollSound.Play();
     }
 
         IEnumerator SpinAllReels()
@@ -150,7 +169,7 @@ public class SlotMachine : MonoBehaviour
     }
 
 
-    bool IsSpinnig()
+    public bool IsSpinnig()
     {
         for (int i = 0;i < reels.Length;i++)
         {

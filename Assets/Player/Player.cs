@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource kick;
     [SerializeField] private AudioSource slap;
 
+    [SerializeField] private AudioSource uiClick;
+
     public int money = 100;
 
 
@@ -46,6 +48,12 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+
+    public void UiClick()
+    {
+        uiClick.Play();
+    }
+
 
     public void SetUIActive(bool state)
     {

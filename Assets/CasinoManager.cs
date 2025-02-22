@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class CasinoManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource rouletteSound;
+    [SerializeField] private AudioSource rouletteWinSound;
+
     public Player player;
 
     public GetColorFromImage proccedColor;
@@ -119,6 +122,8 @@ public class CasinoManager : MonoBehaviour
                 player.money+=10*currentBet;
             else
                 player.money+=2*currentBet;
+
+            rouletteWinSound.Play();
         }
         Reset();
             
@@ -147,6 +152,8 @@ public class CasinoManager : MonoBehaviour
     {
         if (block||currentBet==0||(!ColorButtons[0].GetBool("ispressed")&&!ColorButtons[1].GetBool("ispressed")&&!ColorButtons[2].GetBool("ispressed")))
             return;
+
+        rouletteSound.Play();
         ball.stopped = false;
         StartCoroutine(EBLoUTINOE());
         ball.StartingSpeed = UnityEngine.Random.Range(100, 201);
