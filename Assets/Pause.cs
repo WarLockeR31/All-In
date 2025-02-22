@@ -11,6 +11,11 @@ public class Pause : MonoBehaviour
     public GameObject controls;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OpenHelp()
     {
         help.SetActive(true);
