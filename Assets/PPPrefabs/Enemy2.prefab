@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   speed: 20
-  damage: 10
+  damage: 5
 --- !u!195 &1833435328393840712
 NavMeshAgent:
   m_ObjectHideFlags: 0

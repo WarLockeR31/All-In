@@ -107,10 +107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agroSound: {fileID: 8046937456155007243}
   _punchAudio: {fileID: 5103370043054623008}
-  attackRange: 5
+  attackRange: 8
   attackCooldown: 2
   rotationSpeed: 10
-  dashPower: 50
+  dashPower: 60
   deceleration: 5
   minSpeed: 0.5
 --- !u!114 &1697910702318552470
