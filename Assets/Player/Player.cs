@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
 
         money -= Mathf.RoundToInt(animator.GetBool("isBlocking") ? damage / 2 : damage);
         StartCoroutine(Invincibility());
+        ScreenShake.Instance.takeDamageShake();
+        TakeDamageVignette.Instance.InvokeDamageVignette();
 
         if (money <= 0)
         {
@@ -92,5 +94,31 @@ public class Player : MonoBehaviour
         isInvincible = true;
         yield return new WaitForSeconds(0.5f);
         isInvincible = false;
+    }
+
+    [Header("SlowMo")]
+    public float slowmoTimescale = 0.2f;
+    public float slowmoDuration = 0.1f;
+
+    public void TriggerSlowmo()
+    {
+        StartCoroutine(DoSlowmo());
+    }
+
+    private IEnumerator DoSlowmo()
+    {
+        Time.timeScale = slowmoTimescale;
+        //Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
+        float timer = 0;
+        while (timer < slowmoDuration)
+        {
+            Time.timeScale = Mathf.Lerp(slowmoTimescale, 1, timer / slowmoDuration);
+            timer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        Time.timeScale = 1f;
+        //Time.fixedDeltaTime = 0.02f;
     }
 }

@@ -60,6 +60,7 @@ public class EnemyStats : MonoBehaviour
         //Debug.Log("AAAAAAAAAAAAAAAAA");
 
         StartCoroutine(FlashRed());
+        player.TriggerSlowmo();
 
         if (curHealth <= 0)
             StartCoroutine(Dead());
@@ -111,6 +112,7 @@ public class EnemyStats : MonoBehaviour
     IEnumerator Dead()
     {
         anim.SetBool("isDead", true);
+        GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(1f);
 
